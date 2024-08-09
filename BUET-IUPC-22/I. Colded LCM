@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+#define FAST_IO ios_base::sync_with_stdio(false); cin.tie(NULL)
+#define all(x) (x).begin(), (x).end()
+using namespace std; 
+#define int long long
+
+signed main() {
+   FAST_IO;
+   // start
+   int t;
+   cin>>t;
+   read:
+   while (t--) {
+      int L, R;
+      cin>>L>>R;
+
+      int mx = 32000;
+      int res = L*(L+1);
+      for(int i=1; i<=min(mx, L); i++){
+         int cur = (L+i-1)/i;
+         int a = cur*i;
+         int b = cur*(i+1);
+         if(a>=L && b<=R)res = min(res, b*i);
+         a = cur * i;
+         b = (cur+1) * i;
+         if(a>=L && b<=R)res = min(res, b*cur);
+         
+      }
+      cout<<res<<"\n";
+   
+   }
+
+
+   return 0;
+}
